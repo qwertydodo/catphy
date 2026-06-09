@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { catRepository } from '../../entities/cat'
+import { CAT_API_WEBSITE_URL } from '../../shared/config/catApi'
 import { routes } from '../../shared/config/routes'
 import { setApiKey } from '../../shared/lib/storage'
 import { Button } from '../../shared/ui/Button'
 import { Input } from '../../shared/ui/Input'
+import { PageMeta } from '../../shared/ui/PageMeta'
 import { Text } from '../../shared/ui/Typography'
 import styles from './AuthPage.module.css'
 
@@ -36,8 +38,7 @@ export const AuthPage = () => {
 
   return (
     <div className={styles.page}>
-      <title>{routes.auth.title}</title>
-      <meta name="description" content={routes.auth.description} />
+      <PageMeta title={routes.auth.title} description={routes.auth.description} />
       <div className={styles.card}>
         <Text variant="h2" className={styles.title}>
           🐱 Welcome to Catphy
@@ -62,7 +63,7 @@ export const AuthPage = () => {
         </form>
         <Text variant="sm" muted className={styles.hint}>
           Get a free key at{' '}
-          <a href="https://thecatapi.com" target="_blank" rel="noreferrer" className={styles.link}>
+          <a href={CAT_API_WEBSITE_URL} target="_blank" rel="noreferrer" className={styles.link}>
             thecatapi.com
           </a>
         </Text>

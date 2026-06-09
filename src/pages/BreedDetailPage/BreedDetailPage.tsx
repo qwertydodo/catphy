@@ -2,9 +2,11 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 import { breedQueries } from '../../entities/breed'
 import { CatGrid, catQueries } from '../../entities/cat'
+import { env } from '../../shared/config/env'
 import { routes } from '../../shared/config/routes'
 import { Button } from '../../shared/ui/Button'
 import { ErrorMessage } from '../../shared/ui/ErrorMessage'
+import { PageMeta } from '../../shared/ui/PageMeta'
 import { Spinner } from '../../shared/ui/Spinner'
 import { Text } from '../../shared/ui/Typography'
 import styles from './BreedDetailPage.module.css'
@@ -36,12 +38,11 @@ export const BreedDetailPage = () => {
 
   return (
     <div className={styles.page}>
-      <title>{meta.title}</title>
-      <meta name="description" content={meta.description} />
+      <PageMeta title={meta.title} description={meta.description} />
       <div className={styles.hero}>
         {breed.reference_image_id && (
           <img
-            src={`https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`}
+            src={`${env.catCdnBaseUrl}/${breed.reference_image_id}.jpg`}
             alt={breed.name}
             className={styles.heroImage}
           />

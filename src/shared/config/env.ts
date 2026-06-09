@@ -6,4 +6,5 @@ const requireEnv = (key: string): string => {
 
 export const env = {
   catApiBaseUrl: requireEnv('VITE_CAT_API_BASE_URL'),
+  catCdnBaseUrl: requireEnv('VITE_CAT_CDN_BASE_URL'),
 } as const

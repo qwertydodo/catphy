@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import type { Breed } from '../../entities/breed'
+import { env } from '../../shared/config/env'
 import { routes } from '../../shared/config/routes'
 import styles from './BreedsPage.module.css'
 
@@ -8,7 +9,7 @@ type BreedCardProps = { breed: Breed }
 export const BreedCard = ({ breed }: BreedCardProps) => {
   const navigate = useNavigate()
   const imageUrl = breed.reference_image_id
-    ? `https://cdn2.thecatapi.com/images/${breed.reference_image_id}.jpg`
+    ? `${env.catCdnBaseUrl}/${breed.reference_image_id}.jpg`
     : null
 
   return (
