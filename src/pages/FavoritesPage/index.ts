@@ -1,1 +1,1 @@
-export const FavoritesPage = () => null
+export { FavoritesPage } from './FavoritesPage'
