@@ -1,6 +1,9 @@
-const catApiBaseUrl = import.meta.env.VITE_CAT_API_BASE_URL as string | undefined
-if (!catApiBaseUrl) throw new Error('VITE_CAT_API_BASE_URL is not defined')
+const requireEnv = (key: string): string => {
+  const value = import.meta.env[key] as string | undefined
+  if (!value) throw new Error(`${key} is not defined`)
+  return value
+}
 
 export const env = {
-  catApiBaseUrl,
+  catApiBaseUrl: requireEnv('VITE_CAT_API_BASE_URL'),
 } as const

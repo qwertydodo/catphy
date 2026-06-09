@@ -1,3 +1,4 @@
+import type { LimitParams } from '../../../shared/types/api'
 import type { Breed } from '../../breed/model/types'
 
 export type CatImage = {
@@ -18,7 +19,6 @@ export type Favorite = {
   created_at: string
 }
 
-export type CatSearchParams = {
+export type CatSearchParams = LimitParams & {
   breed_ids?: string
-  limit?: number
 }
