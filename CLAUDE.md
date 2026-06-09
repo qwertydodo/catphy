@@ -35,6 +35,15 @@ Each slice exposes its public API through `index.ts` only. Do not import from in
 - E2E: Playwright. Tests that require a real API key check `process.env.CAT_API_KEY` and skip if absent.
 - Run before committing: `npx tsc --noEmit && npx biome check .`
 
+## Feature Completeness
+
+After every feature or behaviour change, explicitly ask whether these need updating:
+
+- **E2E tests** — new user-visible flows (auth, logout, navigation, favorites) need Playwright coverage.
+- **`docs/design.md`** — any change to app features, data flow, or architecture must be reflected there.
+
+Do not mark a task done without raising this question.
+
 ## Query Pattern
 
 ```ts
