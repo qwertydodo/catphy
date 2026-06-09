@@ -1,0 +1,17 @@
+node_modules
+dist
+.env
+.worktrees
+*.local
+
+# Vite
+.vite
+
+# Testing
+coverage
+playwright-report
+test-results
+
+# OS
+.DS_Store
+Thumbs.db
