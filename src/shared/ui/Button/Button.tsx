@@ -20,8 +20,9 @@ export const Button = ({
   <button
     className={clsx(styles.button, styles[variant], className)}
     disabled={disabled || loading}
+    aria-busy={loading}
     {...props}
   >
-    {loading ? <span className={styles.spinner} /> : children}
+    {loading ? <span className={styles.spinner} aria-hidden="true" /> : children}
   </button>
 )

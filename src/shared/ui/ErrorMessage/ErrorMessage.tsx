@@ -6,7 +6,7 @@ type ErrorMessageProps = {
 }
 
 export const ErrorMessage = ({ message, onRetry }: ErrorMessageProps) => (
-  <div className={styles.wrapper}>
+  <div className={styles.wrapper} role="alert">
     <span className={styles.message}>{message}</span>
     {onRetry && (
       <button type="button" className={styles.retry} onClick={onRetry}>

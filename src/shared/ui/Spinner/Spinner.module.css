@@ -32,18 +32,19 @@
 .rainbow {
   height: 4px;
   width: 100%;
-  background: linear-gradient(
+  background: repeating-linear-gradient(
     to right,
-    var(--color-rainbow-1),
-    var(--color-rainbow-2),
-    var(--color-rainbow-3),
-    var(--color-rainbow-4),
-    var(--color-rainbow-5),
-    var(--color-rainbow-6)
+    var(--color-rainbow-1) 0%,
+    var(--color-rainbow-2) 16.6%,
+    var(--color-rainbow-3) 33.3%,
+    var(--color-rainbow-4) 50%,
+    var(--color-rainbow-5) 66.6%,
+    var(--color-rainbow-6) 83.3%,
+    var(--color-rainbow-1) 100%
   );
+  background-size: 200% 100%;
   border-radius: 2px;
   animation: rainbow-shift 1s linear infinite;
-  background-size: 200% 100%;
 }
 
 @keyframes bounce {
