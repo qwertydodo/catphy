@@ -1,5 +1,5 @@
 import { clsx } from 'clsx'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CatLogo } from '../CatLogo'
 import styles from './ImageWithFallback.module.css'
 
@@ -19,15 +19,26 @@ export const ImageWithFallback = ({
   className,
 }: ImageWithFallbackProps) => {
   const [status, setStatus] = useState<ImageStatus>('loading')
+  const imgRef = useRef<HTMLImageElement>(null)
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: resets on src change; setStatus is a stable state setter
   useEffect(() => {
-    setStatus('loading')
+    // If the browser already has the image cached, `onLoad` may fire synchronously
+    // before this effect runs, and then this effect would overwrite 'loaded' → 'loading'.
+    // Check `complete` to detect that case and keep the already-resolved state.
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
+      setStatus('loaded')
+    } else if (imgRef.current?.complete && imgRef.current.naturalWidth === 0) {
+      setStatus('error')
+    } else {
+      setStatus('loading')
+    }
   }, [src])
 
   return (
     <div className={clsx(styles.root, className)}>
       <img
+        ref={imgRef}
         src={src}
         alt={alt}
         className={styles.image}
