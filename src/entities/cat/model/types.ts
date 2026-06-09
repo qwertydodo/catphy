@@ -1,0 +1,24 @@
+import type { Breed } from '../../breed/model/types'
+
+export type CatImage = {
+  id: string
+  url: string
+  width: number
+  height: number
+  breeds: Breed[]
+}
+
+export type Favorite = {
+  id: number
+  image_id: string
+  image: {
+    id: string
+    url: string
+  }
+  created_at: string
+}
+
+export type CatSearchParams = {
+  breed_ids?: string
+  limit?: number
+}
