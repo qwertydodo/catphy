@@ -22,10 +22,11 @@ Each slice exposes its public API through `index.ts` only. Do not import from in
 - All env vars via `src/shared/config/env.ts`. Never `import.meta.env` directly.
 - All localStorage access via `src/shared/lib/storage.ts` functions.
 
-## Naming Conventions
+## Git Workflow
 
-- Files: PascalCase for components (`CatCard.tsx`), camelCase for utilities (`catQueries.ts`).
-- Branches: `feat/<name>`, `fix/<name>`, `chore/<name>`, `docs/<name>`.
+- **Never push directly to `main` or `master`.** All changes go through a branch + PR.
+- A `pre-push` Lefthook hook enforces this — it will reject any push attempt from those branches.
+- Branch naming: `feat/<name>`, `fix/<name>`, `chore/<name>`, `docs/<name>`.
 - Commits: Conventional Commits — `feat:`, `fix:`, `chore:`, `docs:`, `test:`, `refactor:`.
 
 ## Testing
