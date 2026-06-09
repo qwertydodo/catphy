@@ -4,6 +4,7 @@ import { CatGrid, catQueries } from '../../entities/cat'
 import { routes } from '../../shared/config/routes'
 import { Button } from '../../shared/ui/Button'
 import { ErrorMessage } from '../../shared/ui/ErrorMessage'
+import { PageMeta } from '../../shared/ui/PageMeta'
 import { Spinner } from '../../shared/ui/Spinner'
 import { Text } from '../../shared/ui/Typography'
 import { BreedSelect } from './BreedSelect'
@@ -22,8 +23,7 @@ export const GalleryPage = () => {
 
   return (
     <div className={styles.page}>
-      <title>{routes.gallery.title}</title>
-      <meta name="description" content={routes.gallery.description} />
+      <PageMeta title={routes.gallery.title} description={routes.gallery.description} />
       <div className={styles.header}>
         <Text variant="h2">Cat Gallery</Text>
         <BreedSelect value={breedId} onChange={setBreedId} />

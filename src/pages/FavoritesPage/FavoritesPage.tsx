@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { CatGrid, type CatImage, catQueries } from '../../entities/cat'
 import { routes } from '../../shared/config/routes'
 import { ErrorMessage } from '../../shared/ui/ErrorMessage'
+import { PageMeta } from '../../shared/ui/PageMeta'
 import { Spinner } from '../../shared/ui/Spinner'
 import { Text } from '../../shared/ui/Typography'
 import styles from './FavoritesPage.module.css'
@@ -23,8 +24,7 @@ export const FavoritesPage = () => {
 
   return (
     <div className={styles.page}>
-      <title>{routes.favorites.title}</title>
-      <meta name="description" content={routes.favorites.description} />
+      <PageMeta title={routes.favorites.title} description={routes.favorites.description} />
       <div className={styles.header}>
         <Text variant="h2">Favorites</Text>
         <Text variant="sm" muted>
