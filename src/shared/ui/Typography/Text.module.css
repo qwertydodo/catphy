@@ -1,0 +1,35 @@
+.h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+.h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+}
+.body {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+}
+.sm {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+}
+.caption {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-base);
+  letter-spacing: var(--letter-spacing-wide);
+}
+.muted {
+  color: var(--color-text-muted);
+}
