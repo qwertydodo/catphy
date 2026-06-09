@@ -1,5 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
+export const CAT_API_KEY = process.env.CAT_API_KEY ?? ''
+
 export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,

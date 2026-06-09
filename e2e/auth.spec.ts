@@ -1,4 +1,6 @@
 import { expect, test } from '@playwright/test'
+import { CAT_API_KEY } from '../playwright.config'
+import { AppPage } from './pages/AppPage'
 
 test.beforeEach(async ({ page }) => {
   await page.evaluate(() => localStorage.clear())
@@ -18,10 +20,26 @@ test('shows error on invalid API key', async ({ page }) => {
 })
 
 test('redirects to gallery after valid API key', async ({ page }) => {
-  const key = process.env.CAT_API_KEY ?? ''
-  test.skip(!key, 'CAT_API_KEY env var required')
+  test.skip(!CAT_API_KEY, 'CAT_API_KEY env var required')
   await page.goto('/auth')
-  await page.getByLabel('API Key').fill(key)
+  await page.getByLabel('API Key').fill(CAT_API_KEY)
   await page.getByRole('button', { name: /save/i }).click()
   await expect(page).toHaveURL('/')
+})
+
+test('log out button clears key and redirects to /auth', async ({ page }) => {
+  await new AppPage(page).authenticate()
+  await page.goto('/')
+  await page.getByRole('button', { name: /log out/i }).click()
+  await expect(page).toHaveURL('/auth')
+  const storedKey = await page.evaluate(() => localStorage.getItem('cat_api_key'))
+  expect(storedKey).toBeNull()
+})
+
+test('after logout, protected pages redirect to /auth', async ({ page }) => {
+  await new AppPage(page).authenticate()
+  await page.goto('/')
+  await page.getByRole('button', { name: /log out/i }).click()
+  await page.goto('/favorites')
+  await expect(page).toHaveURL('/auth')
 })

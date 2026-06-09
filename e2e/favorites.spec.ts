@@ -1,9 +1,8 @@
 import { expect, test } from '@playwright/test'
+import { AppPage } from './pages/AppPage'
 
 test.beforeEach(async ({ page }) => {
-  const key = process.env.CAT_API_KEY ?? ''
-  test.skip(!key, 'CAT_API_KEY env var required')
-  await page.evaluate((k) => localStorage.setItem('cat_api_key', k), key)
+  await new AppPage(page).authenticate()
 })
 
 test('favoriting a cat shows it on favorites page', async ({ page }) => {
