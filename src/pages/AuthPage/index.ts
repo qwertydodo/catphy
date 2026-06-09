@@ -1,1 +1,1 @@
-export const AuthPage = () => null
+export { AuthPage } from './AuthPage'
