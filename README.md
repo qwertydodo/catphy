@@ -12,7 +12,7 @@ A Nyan Cat-themed browser for [The Cat API](https://thecatapi.com) — explore a
 
 ## Tech Stack
 
-React 18 · TypeScript · Vite · TanStack Query v5 · Axios · React Router v6 · CSS Modules · Vitest · Playwright · Biome
+React 19 · TypeScript · Vite · TanStack Query v5 · Axios · React Router v6 · CSS Modules · Vitest · Playwright · Biome
 
 ## Getting Started
 
