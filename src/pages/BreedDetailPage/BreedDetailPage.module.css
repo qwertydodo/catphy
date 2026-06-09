@@ -11,7 +11,7 @@
   align-items: start;
 }
 
-@media (max-width: 768px) {
+@media (--screen-md) {
   .hero {
     grid-template-columns: 1fr;
   }

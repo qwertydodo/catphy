@@ -64,7 +64,7 @@
   padding: 0 var(--spacing-6);
 }
 
-@media (max-width: 640px) {
+@media (--screen-sm) {
   .headerInner {
     padding: var(--spacing-3) var(--spacing-4);
   }

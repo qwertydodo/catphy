@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.16",
+    "@csstools/postcss-global-data": "^4.0.0",
     "@playwright/test": "^1.60.0",
     "@tanstack/react-query-devtools": "^5.101.0",
     "@testing-library/jest-dom": "^6.9.1",
@@ -36,6 +37,7 @@
     "@vitest/coverage-v8": "^4.1.8",
     "jsdom": "^29.1.1",
     "lefthook": "^2.1.9",
+    "postcss-custom-media": "^12.0.1",
     "typescript": "~6.0.2",
     "vite": "^8.0.12",
     "vitest": "^4.1.8"

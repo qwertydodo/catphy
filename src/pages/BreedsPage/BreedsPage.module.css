@@ -10,9 +10,15 @@
   gap: var(--spacing-4);
 }
 
-@media (max-width: 640px) {
+@media (--screen-lg) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (--screen-sm) {
+  .grid {
+    grid-template-columns: 1fr;
     gap: var(--spacing-2);
   }
 }

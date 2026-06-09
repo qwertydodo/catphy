@@ -64,6 +64,11 @@
   --letter-spacing-wide: 0.06em;
 }
 
+/* Breakpoints */
+@custom-media --screen-sm (max-width: 640px);
+@custom-media --screen-md (max-width: 768px);
+@custom-media --screen-lg (max-width: 1024px);
+
 /* Layout & spacing */
 :root {
   --container-max: 1280px;

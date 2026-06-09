@@ -1,12 +1,27 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
+  "files": {
+    "includes": [
+      "**",
+      "!!**/dist",
+      "!!**/*.d.ts",
+      "!!e2e/**/*.js",
+      "!!playwright.config.js",
+      "!!vite.config.js",
+      "!!**/*.tsbuildinfo"
+    ]
+  },
   "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
-      "suspicious": { "noExplicitAny": "error" },
-      "style": { "noNonNullAssertion": "warn" }
+      "suspicious": {
+        "noExplicitAny": "error",
+        "noUnknownAtRules": "off"
+      },
+      "style": { "noNonNullAssertion": "warn" },
+      "correctness": { "noUnknownMediaFeatureName": "off" }
     }
   },
   "formatter": {
