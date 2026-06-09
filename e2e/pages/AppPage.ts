@@ -6,6 +6,6 @@ export class AppPage {
 
   async authenticate() {
     test.skip(!CAT_API_KEY, 'CAT_API_KEY env var required')
-    await this.page.evaluate((k) => localStorage.setItem('cat_api_key', k), CAT_API_KEY)
+    await this.page.addInitScript((k) => localStorage.setItem('cat_api_key', k), CAT_API_KEY)
   }
 }

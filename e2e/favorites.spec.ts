@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, test } from './fixtures'
 import { AppPage } from './pages/AppPage'
 
 test.beforeEach(async ({ page }) => {

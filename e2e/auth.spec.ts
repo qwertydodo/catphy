@@ -1,10 +1,6 @@
-import { expect, test } from '@playwright/test'
 import { CAT_API_KEY } from '../playwright.config'
+import { expect, test } from './fixtures'
 import { AppPage } from './pages/AppPage'
-
-test.beforeEach(async ({ page }) => {
-  await page.addInitScript(() => localStorage.clear())
-})
 
 test('redirects to /auth when no API key', async ({ page }) => {
   await page.goto('/')

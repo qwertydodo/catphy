@@ -28,6 +28,7 @@ Each slice exposes its public API through `index.ts` only. Do not import from in
 - A `pre-push` Lefthook hook enforces this — it will reject any push attempt from those branches.
 - Branch naming: `feat/<name>`, `fix/<name>`, `chore/<name>`, `docs/<name>`.
 - Commits: Conventional Commits — `feat:`, `fix:`, `chore:`, `docs:`, `test:`, `refactor:`.
+- **Never push unless explicitly asked.** If errors occur during a task, fix them and present the result for review — do not commit and push in the same step without user approval.
 
 ## Testing
 
