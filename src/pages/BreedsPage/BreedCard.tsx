@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import type { Breed } from '../../entities/breed'
+import { routes } from '../../shared/config/routes'
 import styles from './BreedsPage.module.css'
 
 type BreedCardProps = { breed: Breed }
@@ -14,7 +15,7 @@ export const BreedCard = ({ breed }: BreedCardProps) => {
     <button
       type="button"
       className={styles.breedCard}
-      onClick={() => navigate(`/breeds/${breed.id}`)}
+      onClick={() => navigate(routes.breedDetail(breed.id))}
     >
       <div className={styles.breedImageWrapper}>
         {imageUrl ? (

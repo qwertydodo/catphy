@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { routes } from '../../config/routes'
 import { CornerPet } from '../CornerPet'
 import styles from './Layout.module.css'
 
@@ -11,25 +12,25 @@ export const Layout = ({ children }: LayoutProps) => (
   <div className={styles.root}>
     <header className={styles.header}>
       <div className={styles.headerInner}>
-        <Link to="/" className={styles.logo}>
+        <Link to={routes.gallery} className={styles.logo}>
           🐱 Catphy
         </Link>
         <nav className={styles.nav}>
           <NavLink
-            to="/"
+            to={routes.gallery}
             end
             className={({ isActive }) => (isActive ? styles.navLinkActive : styles.navLink)}
           >
             Gallery
           </NavLink>
           <NavLink
-            to="/breeds"
+            to={routes.breeds}
             className={({ isActive }) => (isActive ? styles.navLinkActive : styles.navLink)}
           >
             Breeds
           </NavLink>
           <NavLink
-            to="/favorites"
+            to={routes.favorites}
             className={({ isActive }) => (isActive ? styles.navLinkActive : styles.navLink)}
           >
             Favorites

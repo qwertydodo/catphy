@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { catRepository } from '../../entities/cat'
+import { routes } from '../../shared/config/routes'
 import { setApiKey } from '../../shared/lib/storage'
 import { Button } from '../../shared/ui/Button'
 import { Input } from '../../shared/ui/Input'
@@ -24,7 +25,7 @@ export const AuthPage = () => {
     setApiKey(key.trim())
     try {
       await catRepository.getAll({ limit: 1 })
-      navigate('/')
+      navigate(routes.gallery)
     } catch {
       setApiKey('')
       setError('Invalid API key. Get yours at thecatapi.com')

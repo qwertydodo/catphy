@@ -4,12 +4,13 @@ import { BreedDetailPage } from '../pages/BreedDetailPage'
 import { BreedsPage } from '../pages/BreedsPage'
 import { FavoritesPage } from '../pages/FavoritesPage'
 import { GalleryPage } from '../pages/GalleryPage'
+import { routes } from '../shared/config/routes'
 import { Layout } from '../shared/ui/Layout'
 import { RequireApiKey } from './guards/RequireApiKey'
 
 export const router = createBrowserRouter([
   {
-    path: '/auth',
+    path: routes.auth,
     element: <AuthPage />,
   },
   {
@@ -22,10 +23,10 @@ export const router = createBrowserRouter([
           </Layout>
         ),
         children: [
-          { path: '/', element: <GalleryPage /> },
-          { path: '/breeds', element: <BreedsPage /> },
-          { path: '/breeds/:id', element: <BreedDetailPage /> },
-          { path: '/favorites', element: <FavoritesPage /> },
+          { path: routes.gallery, element: <GalleryPage /> },
+          { path: routes.breeds, element: <BreedsPage /> },
+          { path: routes.breedDetail(':id'), element: <BreedDetailPage /> },
+          { path: routes.favorites, element: <FavoritesPage /> },
         ],
       },
     ],
