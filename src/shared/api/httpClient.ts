@@ -17,7 +17,9 @@ httpClient.interceptors.response.use(
   (error) => {
     if (axios.isAxiosError(error) && error.response?.status === 401) {
       clearApiKey()
-      window.location.href = '/auth'
+      if (window.location.pathname !== '/auth') {
+        window.location.href = '/auth'
+      }
     }
     return Promise.reject(error)
   }

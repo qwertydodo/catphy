@@ -14,6 +14,7 @@ describe('useApiKey', () => {
     const { result } = renderHook(() => useApiKey())
     act(() => result.current.saveKey('my-key'))
     expect(result.current.apiKey).toBe('my-key')
+    expect(localStorage.getItem('cat_api_key')).toBe('my-key')
   })
 
   it('clears key', () => {
@@ -21,5 +22,6 @@ describe('useApiKey', () => {
     act(() => result.current.saveKey('my-key'))
     act(() => result.current.clearKey())
     expect(result.current.apiKey).toBeNull()
+    expect(localStorage.getItem('cat_api_key')).toBeNull()
   })
 })
