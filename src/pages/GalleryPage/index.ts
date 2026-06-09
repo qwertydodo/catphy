@@ -1,1 +1,1 @@
-export const GalleryPage = () => null
+export { GalleryPage } from './GalleryPage'
