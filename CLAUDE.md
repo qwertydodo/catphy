@@ -43,6 +43,12 @@ useQuery(catQueries.byId(id, { enabled: !!id }))
 useInfiniteQuery(catQueries.all({ breed_ids: breedId }))
 ```
 
+## Design System
+
+- Always use shared UI components from `src/shared/ui/` (Button, Spinner, etc.) instead of raw HTML primitives.
+- Check `src/shared/ui/` before writing any interactive or styled element. If a component exists, use it with its variant prop.
+- Never duplicate styles in per-component CSS that belong to a shared component.
+
 ## Accessibility
 
 - All interactive elements need `aria-label` when they lack visible text.

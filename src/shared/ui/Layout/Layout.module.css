@@ -22,6 +22,9 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-accent);
