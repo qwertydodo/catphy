@@ -36,7 +36,7 @@ export const catQueries = {
   favorites: (queryOptions?: Partial<UseQueryOptions<Response<Favorite[]>>>) => ({
     queryKey: ['cats', 'favorites'] as const,
     queryFn: () => catRepository.getFavorites(),
-    staleTime: 0,
+    staleTime: 60_000,
     ...queryOptions,
   }),
 }

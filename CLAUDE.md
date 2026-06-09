@@ -9,7 +9,7 @@ Each slice exposes its public API through `index.ts` only. Do not import from in
 ## Layer Rules
 
 - `shared/` — zero domain knowledge. Generic utilities, types, UI primitives only.
-- `entities/` — domain logic (cat, breed). Repos, query factories, reused UI (CatCard, CatGrid).
+- `entities/` — domain logic (cat, breed). Repos, query factories, reused UI components.
 - `pages/` — page assemblies. Page-specific components (BreedCard, BreedSelect) live here.
 - `app/` — routing, providers, guards only. No business logic.
 
@@ -40,7 +40,7 @@ Each slice exposes its public API through `index.ts` only. Do not import from in
 After every feature or behaviour change, explicitly ask whether these need updating:
 
 - **E2E tests** — new user-visible flows (auth, logout, navigation, favorites) need Playwright coverage.
-- **`docs/design.md`** — any change to app features, data flow, or architecture must be reflected there.
+- **`docs/architecture.md`** — any global change (new pattern, layer rule, tooling, data flow) must be reflected there. Keep it at the pattern level — do not describe individual component behaviour.
 
 Do not mark a task done without raising this question.
 

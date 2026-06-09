@@ -30,7 +30,7 @@ shared/   — generic UI kit, HTTP client, localStorage utils, API types
 | `shared/types` | Reusable API types (ApiResponse, PaginatedResponse, ApiError, LimitParams) |
 | `shared/lib` | localStorage wrapper, useApiKey hook |
 | `shared/api` | Axios instance with API key + 401 interceptors |
-| `entities/cat` | CatImage domain: repository, query factory, CatCard, CatGrid |
+| `entities/cat` | CatImage domain: repository, query factory, reused UI components |
 | `entities/breed` | Breed domain: repository, query factory, types |
 | `pages/*` | Assemble entities + local components into full pages |
 | `app/guards` | RequireApiKey: redirects unauthenticated users to /auth |
@@ -46,8 +46,6 @@ shared/   — generic UI kit, HTTP client, localStorage utils, API types
 ```ts
 const { data } = useInfiniteQuery(catQueries.all({ breed_ids: id }))
 ```
-
-**CatGrid cross-references favorites** — CatGrid fetches `catQueries.favorites()` internally (cached, staleTime 0) and passes `isFavorited` + `favoriteId` to each CatCard. Avoids prop-drilling from pages.
 
 **Two-tier design tokens** — CSS vars split into a primitive palette (`:root { --pink-400: ... }`) and semantic tokens (`[data-theme="dark"] { --color-accent: var(--pink-400) }`). Components only use semantic tokens. Light theme requires only a `[data-theme="light"]` block.
 
