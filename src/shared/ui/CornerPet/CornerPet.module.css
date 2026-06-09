@@ -1,0 +1,55 @@
+.container {
+  position: fixed;
+  bottom: var(--spacing-6);
+  right: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  animation: fly 3s ease-in-out infinite;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.rainbow {
+  width: 48px;
+  height: 6px;
+  background: linear-gradient(
+    to left,
+    var(--color-rainbow-1),
+    var(--color-rainbow-2),
+    var(--color-rainbow-3),
+    var(--color-rainbow-4),
+    var(--color-rainbow-5),
+    var(--color-rainbow-6)
+  );
+  border-radius: 3px;
+  animation: stretch 3s ease-in-out infinite;
+}
+
+.cat {
+  font-size: 32px;
+  line-height: 1;
+}
+
+@keyframes fly {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes stretch {
+  0%,
+  100% {
+    width: 48px;
+    opacity: 0.7;
+  }
+  50% {
+    width: 72px;
+    opacity: 1;
+  }
+}

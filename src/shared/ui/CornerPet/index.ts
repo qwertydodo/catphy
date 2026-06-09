@@ -1,0 +1,1 @@
+export { CornerPet } from './CornerPet'
