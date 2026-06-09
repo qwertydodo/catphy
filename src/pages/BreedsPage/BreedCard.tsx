@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import type { Breed } from '../../entities/breed'
-import { env } from '../../shared/config/env'
+import { getBreedImageUrl } from '../../entities/breed'
 import { routes } from '../../shared/config/routes'
 import styles from './BreedsPage.module.css'
 
@@ -8,9 +8,7 @@ type BreedCardProps = { breed: Breed }
 
 export const BreedCard = ({ breed }: BreedCardProps) => {
   const navigate = useNavigate()
-  const imageUrl = breed.reference_image_id
-    ? `${env.catCdnBaseUrl}/${breed.reference_image_id}.jpg`
-    : null
+  const imageUrl = breed.reference_image_id ? getBreedImageUrl(breed.reference_image_id) : null
 
   return (
     <button

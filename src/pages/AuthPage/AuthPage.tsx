@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { catRepository } from '../../entities/cat'
-import { CAT_API_WEBSITE_URL } from '../../shared/config/catApi'
+import { externalResources } from '../../shared/config/externalResources'
 import { routes } from '../../shared/config/routes'
 import { setApiKey } from '../../shared/lib/storage'
 import { Button } from '../../shared/ui/Button'
@@ -63,7 +63,12 @@ export const AuthPage = () => {
         </form>
         <Text variant="sm" muted className={styles.hint}>
           Get a free key at{' '}
-          <a href={CAT_API_WEBSITE_URL} target="_blank" rel="noreferrer" className={styles.link}>
+          <a
+            href={externalResources.catApiWebsiteUrl}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.link}
+          >
             thecatapi.com
           </a>
         </Text>

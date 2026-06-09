@@ -1,8 +1,7 @@
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
-import { breedQueries } from '../../entities/breed'
+import { breedQueries, getBreedImageUrl } from '../../entities/breed'
 import { CatGrid, catQueries } from '../../entities/cat'
-import { env } from '../../shared/config/env'
 import { routes } from '../../shared/config/routes'
 import { Button } from '../../shared/ui/Button'
 import { ErrorMessage } from '../../shared/ui/ErrorMessage'
@@ -42,7 +41,7 @@ export const BreedDetailPage = () => {
       <div className={styles.hero}>
         {breed.reference_image_id && (
           <img
-            src={`${env.catCdnBaseUrl}/${breed.reference_image_id}.jpg`}
+            src={getBreedImageUrl(breed.reference_image_id)}
             alt={breed.name}
             className={styles.heroImage}
           />
