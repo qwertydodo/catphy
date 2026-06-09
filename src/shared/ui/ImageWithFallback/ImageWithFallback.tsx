@@ -20,7 +20,7 @@ export const ImageWithFallback = ({
 }: ImageWithFallbackProps) => {
   const [status, setStatus] = useState<ImageStatus>('loading')
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: src is a prop; resetting status when it changes is intentional
+  // biome-ignore lint/correctness/useExhaustiveDependencies: setStatus is a stable state setter
   useEffect(() => {
     setStatus('loading')
   }, [src])
@@ -43,7 +43,7 @@ export const ImageWithFallback = ({
         </div>
       )}
       {status === 'error' && (
-        <div className={styles.placeholder}>
+        <div className={styles.placeholder} role="alert">
           <CatLogo size="sm" />
           <span className={styles.errorText}>{errorMessage}</span>
         </div>
