@@ -1,1 +1,1 @@
-export const BreedDetailPage = () => null
+export { BreedDetailPage } from './BreedDetailPage'
