@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { wrapper } from '../../../../test/utils'
 import { CatCard } from './CatCard'
@@ -18,7 +18,9 @@ const mockImage = {
 describe('CatCard', () => {
   it('renders cat image', () => {
     render(<CatCard image={mockImage} isFavorited={false} />, { wrapper })
-    expect(screen.getByRole('img')).toHaveAttribute('src', mockImage.url)
+    const img = screen.getByAltText('A cat')
+    fireEvent.load(img)
+    expect(img).toHaveAttribute('src', mockImage.url)
   })
 
   it('shows filled heart when favorited', () => {

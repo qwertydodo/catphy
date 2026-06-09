@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { clsx } from 'clsx'
+import { ImageWithFallback } from '../../../../shared/ui/ImageWithFallback'
 import { catRepository } from '../../api/catRepository'
 import type { CatImage } from '../../model/types'
 import styles from './CatCard.module.css'
@@ -36,7 +37,7 @@ export const CatCard = ({ image, isFavorited, favoriteId }: CatCardProps) => {
 
   return (
     <div className={styles.card}>
-      <img src={image.url} alt="A cat" className={styles.image} loading="lazy" />
+      <ImageWithFallback src={image.url} alt="A cat" className={styles.image} />
       <div className={styles.overlay}>
         <button
           type="button"
