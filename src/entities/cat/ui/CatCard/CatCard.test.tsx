@@ -1,6 +1,6 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
+import { wrapper } from '../../../../test/utils'
 import { CatCard } from './CatCard'
 
 vi.mock('../../../../shared/api/catApiClient', () => ({
@@ -14,12 +14,6 @@ const mockImage = {
   height: 600,
   breeds: [],
 }
-
-const wrapper = ({ children }: { children: React.ReactNode }) => (
-  <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
-    {children}
-  </QueryClientProvider>
-)
 
 describe('CatCard', () => {
   it('renders cat image', () => {
