@@ -27,11 +27,6 @@
   animation: stretch 3s ease-in-out infinite;
 }
 
-.cat {
-  font-size: 32px;
-  line-height: 1;
-}
-
 @keyframes fly {
   0%,
   100% {

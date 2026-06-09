@@ -1,0 +1,1 @@
+export { CatLogo } from './CatLogo'

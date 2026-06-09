@@ -5,16 +5,6 @@
   padding: var(--spacing-8);
 }
 
-.sm {
-  font-size: 24px;
-}
-.md {
-  font-size: 40px;
-}
-.lg {
-  font-size: 64px;
-}
-
 .sm,
 .md,
 .lg {
@@ -23,10 +13,6 @@
   align-items: center;
   gap: var(--spacing-2);
   animation: bounce 0.6s ease-in-out infinite alternate;
-}
-
-.nyan {
-  line-height: 1;
 }
 
 .rainbow {
