@@ -15,7 +15,7 @@ export const BreedCard = ({ breed }: BreedCardProps) => {
     <button
       type="button"
       className={styles.breedCard}
-      onClick={() => navigate(routes.breedDetail(breed.id))}
+      onClick={() => navigate(routes.breedDetail.path(breed.id))}
     >
       <div className={styles.breedImageWrapper}>
         {imageUrl ? (

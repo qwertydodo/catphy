@@ -1,6 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { CatGrid, catQueries } from '../../entities/cat'
+import { routes } from '../../shared/config/routes'
 import { Button } from '../../shared/ui/Button'
 import { ErrorMessage } from '../../shared/ui/ErrorMessage'
 import { Spinner } from '../../shared/ui/Spinner'
@@ -21,6 +22,8 @@ export const GalleryPage = () => {
 
   return (
     <div className={styles.page}>
+      <title>{routes.gallery.title}</title>
+      <meta name="description" content={routes.gallery.description} />
       <div className={styles.header}>
         <Text variant="h2">Cat Gallery</Text>
         <BreedSelect value={breedId} onChange={setBreedId} />

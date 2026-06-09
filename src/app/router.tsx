@@ -10,7 +10,7 @@ import { RequireApiKey } from './guards/RequireApiKey'
 
 export const router = createBrowserRouter([
   {
-    path: routes.auth,
+    path: routes.auth.path,
     element: <AuthPage />,
   },
   {
@@ -23,10 +23,10 @@ export const router = createBrowserRouter([
           </Layout>
         ),
         children: [
-          { path: routes.gallery, element: <GalleryPage /> },
-          { path: routes.breeds, element: <BreedsPage /> },
-          { path: routes.breedDetail(':id'), element: <BreedDetailPage /> },
-          { path: routes.favorites, element: <FavoritesPage /> },
+          { path: routes.gallery.path, element: <GalleryPage /> },
+          { path: routes.breeds.path, element: <BreedsPage /> },
+          { path: routes.breedDetail.path(':id'), element: <BreedDetailPage /> },
+          { path: routes.favorites.path, element: <FavoritesPage /> },
         ],
       },
     ],

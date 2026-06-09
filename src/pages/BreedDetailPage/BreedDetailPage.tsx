@@ -2,6 +2,7 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 import { breedQueries } from '../../entities/breed'
 import { CatGrid, catQueries } from '../../entities/cat'
+import { routes } from '../../shared/config/routes'
 import { Button } from '../../shared/ui/Button'
 import { ErrorMessage } from '../../shared/ui/ErrorMessage'
 import { Spinner } from '../../shared/ui/Spinner'
@@ -31,8 +32,12 @@ export const BreedDetailPage = () => {
   if (breedLoading) return <Spinner size="lg" />
   if (breedError || !breed) return <ErrorMessage message="Failed to load breed" />
 
+  const meta = routes.breedDetail.meta(breed.name)
+
   return (
     <div className={styles.page}>
+      <title>{meta.title}</title>
+      <meta name="description" content={meta.description} />
       <div className={styles.hero}>
         {breed.reference_image_id && (
           <img

@@ -25,7 +25,7 @@ export const AuthPage = () => {
     setApiKey(key.trim())
     try {
       await catRepository.getAll({ limit: 1 })
-      navigate(routes.gallery)
+      navigate(routes.gallery.path)
     } catch {
       setApiKey('')
       setError('Invalid API key. Get yours at thecatapi.com')
@@ -36,6 +36,8 @@ export const AuthPage = () => {
 
   return (
     <div className={styles.page}>
+      <title>{routes.auth.title}</title>
+      <meta name="description" content={routes.auth.description} />
       <div className={styles.card}>
         <Text variant="h2" className={styles.title}>
           🐱 Welcome to Catphy

@@ -15,7 +15,7 @@ catApiClient.interceptors.response.use(
 
     if (axios.isAxiosError(error) && error.response?.status === 401) {
       clearApiKey()
-      router.navigate(routes.auth)
+      router.navigate(routes.auth.path)
     }
 
     return Promise.reject(apiError)
