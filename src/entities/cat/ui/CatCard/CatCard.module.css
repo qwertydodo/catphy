@@ -4,7 +4,6 @@
   overflow: hidden;
   aspect-ratio: 1;
   background: var(--color-surface);
-  cursor: pointer;
 }
 
 .image {
@@ -12,11 +11,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform var(--duration-slow) var(--ease-out);
-}
-
-.card:hover .image {
-  transform: scale(1.05);
 }
 
 .overlay {
@@ -32,30 +26,6 @@
 }
 
 .card:hover .overlay {
-  opacity: 1;
-}
-
-/* Rainbow border on hover */
-.card::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: calc(var(--radius-md) + 2px);
-  background: linear-gradient(
-    135deg,
-    var(--color-rainbow-1),
-    var(--color-rainbow-2),
-    var(--color-rainbow-3),
-    var(--color-rainbow-4),
-    var(--color-rainbow-5),
-    var(--color-rainbow-6)
-  );
-  opacity: 0;
-  transition: opacity var(--duration-base) var(--ease-default);
-  z-index: -1;
-}
-
-.card:hover::before {
   opacity: 1;
 }
 
