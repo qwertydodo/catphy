@@ -17,6 +17,8 @@ httpClient.interceptors.response.use(
   (error) => {
     if (axios.isAxiosError(error) && error.response?.status === 401) {
       clearApiKey()
+      // Only redirect when not on /auth to avoid an infinite redirect loop.
+      // AuthPage handles 401 from probe requests directly in its catch block.
       if (window.location.pathname !== '/auth') {
         window.location.href = '/auth'
       }

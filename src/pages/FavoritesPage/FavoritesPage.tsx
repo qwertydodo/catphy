@@ -8,6 +8,7 @@ import styles from './FavoritesPage.module.css'
 export const FavoritesPage = () => {
   const { data: favorites = [], isLoading, isError, refetch } = useQuery(catQueries.favorites())
 
+  // width/height not available from favorites API response; CSS handles image sizing
   const images: CatImage[] = favorites.map((f) => ({
     id: f.image.id,
     url: f.image.url,

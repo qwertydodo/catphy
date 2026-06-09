@@ -15,7 +15,7 @@ export const BreedDetailPage = () => {
     data: breed,
     isLoading: breedLoading,
     isError: breedError,
-  } = useQuery(breedQueries.byId(id!))
+  } = useQuery(breedQueries.byId(id ?? '', { enabled: !!id }))
 
   const {
     data,
@@ -23,10 +23,11 @@ export const BreedDetailPage = () => {
     hasNextPage,
     isFetchingNextPage,
     isLoading: imagesLoading,
-  } = useInfiniteQuery(catQueries.all({ breed_ids: id }))
+  } = useInfiniteQuery(catQueries.all({ breed_ids: id }, { enabled: !!id }))
 
   const images = data?.pages.flat() ?? []
 
+  if (!id) return <ErrorMessage message="Breed not found" />
   if (breedLoading) return <Spinner size="lg" />
   if (breedError || !breed) return <ErrorMessage message="Failed to load breed" />
 

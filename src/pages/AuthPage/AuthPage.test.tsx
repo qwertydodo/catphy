@@ -37,4 +37,15 @@ describe('AuthPage', () => {
     await userEvent.click(screen.getByRole('button', { name: /save/i }))
     await waitFor(() => expect(screen.getByText(/invalid api key/i)).toBeInTheDocument())
   })
+
+  it('navigates to / on valid key', async () => {
+    vi.mocked(httpClient.get).mockResolvedValue({ data: [{}] })
+    render(<AuthPage />, { wrapper })
+    await userEvent.type(screen.getByLabelText(/api key/i), 'live_valid-key')
+    await userEvent.click(screen.getByRole('button', { name: /save/i }))
+    await waitFor(() => {
+      expect(screen.queryByText(/invalid api key/i)).not.toBeInTheDocument()
+      expect(screen.queryByText(/api key is required/i)).not.toBeInTheDocument()
+    })
+  })
 })
