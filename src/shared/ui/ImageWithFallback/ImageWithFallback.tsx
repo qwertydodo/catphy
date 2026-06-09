@@ -20,7 +20,7 @@ export const ImageWithFallback = ({
 }: ImageWithFallbackProps) => {
   const [status, setStatus] = useState<ImageStatus>('loading')
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: setStatus is a stable state setter
+  // biome-ignore lint/correctness/useExhaustiveDependencies: resets on src change; setStatus is a stable state setter
   useEffect(() => {
     setStatus('loading')
   }, [src])
