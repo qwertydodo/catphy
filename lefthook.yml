@@ -9,7 +9,9 @@ pre-commit:
 pre-push:
   commands:
     no-push-to-main:
-      run: >
-        bash -c "branch=$(git rev-parse --abbrev-ref HEAD);
-        if [ \"$branch\" = \"main\" ] || [ \"$branch\" = \"master\" ];
-        then echo 'ERROR: Direct push to main/master is not allowed. Open a PR instead.'; exit 1; fi"
+      run: |
+        branch=$(git rev-parse --abbrev-ref HEAD)
+        if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
+          echo 'ERROR: Direct push to main/master is not allowed. Open a PR instead.'
+          exit 1
+        fi
