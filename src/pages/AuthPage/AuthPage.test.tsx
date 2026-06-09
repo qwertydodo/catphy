@@ -5,11 +5,11 @@ import { MemoryRouter } from 'react-router-dom'
 import { describe, expect, it, vi } from 'vitest'
 import { AuthPage } from './AuthPage'
 
-vi.mock('../../shared/api/httpClient', () => ({
-  httpClient: { get: vi.fn() },
+vi.mock('../../entities/cat', () => ({
+  catRepository: { getAll: vi.fn() },
 }))
 
-import { httpClient } from '../../shared/api/httpClient'
+import { catRepository } from '../../entities/cat'
 
 const wrapper = ({ children }: { children: React.ReactNode }) => (
   <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
@@ -31,7 +31,7 @@ describe('AuthPage', () => {
   })
 
   it('shows error on invalid key (401)', async () => {
-    vi.mocked(httpClient.get).mockRejectedValue({ response: { status: 401 } })
+    vi.mocked(catRepository.getAll).mockRejectedValue({ response: { status: 401 } })
     render(<AuthPage />, { wrapper })
     await userEvent.type(screen.getByLabelText(/api key/i), 'bad-key')
     await userEvent.click(screen.getByRole('button', { name: /save/i }))
@@ -39,7 +39,9 @@ describe('AuthPage', () => {
   })
 
   it('navigates to / on valid key', async () => {
-    vi.mocked(httpClient.get).mockResolvedValue({ data: [{}] })
+    vi.mocked(catRepository.getAll).mockResolvedValue([
+      { id: 'x', url: 'u', width: 1, height: 1, breeds: [] },
+    ])
     render(<AuthPage />, { wrapper })
     await userEvent.type(screen.getByLabelText(/api key/i), 'live_valid-key')
     await userEvent.click(screen.getByRole('button', { name: /save/i }))

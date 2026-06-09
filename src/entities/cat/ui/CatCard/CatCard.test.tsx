@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import { CatCard } from './CatCard'
 
-vi.mock('../../../../shared/api/httpClient', () => ({
-  httpClient: { post: vi.fn(), delete: vi.fn() },
+vi.mock('../../../../shared/api/catApiClient', () => ({
+  catApiClient: { post: vi.fn(), delete: vi.fn() },
 }))
 
 const mockImage = {

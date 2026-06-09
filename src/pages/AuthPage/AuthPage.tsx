@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { httpClient } from '../../shared/api/httpClient'
+import { catRepository } from '../../entities/cat'
 import { setApiKey } from '../../shared/lib/storage'
 import { Button } from '../../shared/ui/Button'
 import { Input } from '../../shared/ui/Input'
@@ -23,7 +23,7 @@ export const AuthPage = () => {
     setLoading(true)
     setApiKey(key.trim())
     try {
-      await httpClient.get('/images/search', { params: { limit: 1 } })
+      await catRepository.getAll({ limit: 1 })
       navigate('/')
     } catch {
       setApiKey('')

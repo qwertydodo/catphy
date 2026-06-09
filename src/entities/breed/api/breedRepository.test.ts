@@ -1,13 +1,13 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { breedRepository } from './breedRepository'
 
-vi.mock('../../../shared/api/httpClient', () => ({
-  httpClient: {
+vi.mock('../../../shared/api/catApiClient', () => ({
+  catApiClient: {
     get: vi.fn(),
   },
 }))
 
-import { httpClient } from '../../../shared/api/httpClient'
+import { catApiClient } from '../../../shared/api/catApiClient'
 
 const mockBreed = {
   id: 'abys',
@@ -23,16 +23,16 @@ afterEach(() => vi.clearAllMocks())
 
 describe('breedRepository', () => {
   it('getAll returns array of breeds', async () => {
-    vi.mocked(httpClient.get).mockResolvedValue({ data: [mockBreed] })
+    vi.mocked(catApiClient.get).mockResolvedValue({ data: [mockBreed] })
     const result = await breedRepository.getAll()
-    expect(httpClient.get).toHaveBeenCalledWith('/breeds')
+    expect(catApiClient.get).toHaveBeenCalledWith('/breeds')
     expect(result).toEqual([mockBreed])
   })
 
   it('getById returns single breed', async () => {
-    vi.mocked(httpClient.get).mockResolvedValue({ data: mockBreed })
+    vi.mocked(catApiClient.get).mockResolvedValue({ data: mockBreed })
     const result = await breedRepository.getById('abys')
-    expect(httpClient.get).toHaveBeenCalledWith('/breeds/abys')
+    expect(catApiClient.get).toHaveBeenCalledWith('/breeds/abys')
     expect(result).toEqual(mockBreed)
   })
 })

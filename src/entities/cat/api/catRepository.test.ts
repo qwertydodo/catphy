@@ -1,10 +1,10 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
-vi.mock('../../../shared/api/httpClient', () => ({
-  httpClient: { get: vi.fn(), post: vi.fn(), delete: vi.fn() },
+vi.mock('../../../shared/api/catApiClient', () => ({
+  catApiClient: { get: vi.fn(), post: vi.fn(), delete: vi.fn() },
 }))
 
-import { httpClient } from '../../../shared/api/httpClient'
+import { catApiClient } from '../../../shared/api/catApiClient'
 import { catRepository } from './catRepository'
 
 const mockImage = {
@@ -25,31 +25,31 @@ afterEach(() => vi.clearAllMocks())
 
 describe('catRepository', () => {
   it('getAll fetches images with params', async () => {
-    vi.mocked(httpClient.get).mockResolvedValue({ data: [mockImage] })
+    vi.mocked(catApiClient.get).mockResolvedValue({ data: [mockImage] })
     const result = await catRepository.getAll({ page: 0, limit: 9 })
-    expect(httpClient.get).toHaveBeenCalledWith('/images/search', {
+    expect(catApiClient.get).toHaveBeenCalledWith('/images/search', {
       params: { page: 0, limit: 9, order: 'RANDOM' },
     })
     expect(result).toEqual([mockImage])
   })
 
   it('getFavorites returns favorite list', async () => {
-    vi.mocked(httpClient.get).mockResolvedValue({ data: [mockFavorite] })
+    vi.mocked(catApiClient.get).mockResolvedValue({ data: [mockFavorite] })
     const result = await catRepository.getFavorites()
-    expect(httpClient.get).toHaveBeenCalledWith('/favourites')
+    expect(catApiClient.get).toHaveBeenCalledWith('/favourites')
     expect(result).toEqual([mockFavorite])
   })
 
   it('addFavorite posts image id', async () => {
-    vi.mocked(httpClient.post).mockResolvedValue({ data: { id: 1 } })
+    vi.mocked(catApiClient.post).mockResolvedValue({ data: { id: 1 } })
     const result = await catRepository.addFavorite('abc')
-    expect(httpClient.post).toHaveBeenCalledWith('/favourites', { image_id: 'abc' })
+    expect(catApiClient.post).toHaveBeenCalledWith('/favourites', { image_id: 'abc' })
     expect(result).toEqual({ id: 1 })
   })
 
   it('removeFavorite deletes by favorite id', async () => {
-    vi.mocked(httpClient.delete).mockResolvedValue({ data: {} })
+    vi.mocked(catApiClient.delete).mockResolvedValue({ data: {} })
     await catRepository.removeFavorite(1)
-    expect(httpClient.delete).toHaveBeenCalledWith('/favourites/1')
+    expect(catApiClient.delete).toHaveBeenCalledWith('/favourites/1')
   })
 })
