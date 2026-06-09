@@ -1,0 +1,157 @@
+/* Layer 1: Primitive palette */
+:root {
+  --navy-950: #0a1628;
+  --navy-900: #111d35;
+  --navy-800: #1a2a4a;
+  --navy-700: #1e3a5f;
+
+  --gray-100: #e8eaf0;
+  --gray-400: #7a8aaa;
+
+  --white: #ffffff;
+  --black: #000000;
+
+  --pink-400: #ff6eb4;
+  --red-500: #ff2222;
+  --orange-500: #ff8c00;
+  --yellow-500: #ffff00;
+  --green-500: #00cc44;
+  --blue-500: #00aaff;
+  --purple-500: #8b00ff;
+}
+
+/* Layer 2: Semantic tokens */
+[data-theme="dark"] {
+  --color-bg: var(--navy-950);
+  --color-surface: var(--navy-900);
+  --color-surface-2: var(--navy-800);
+  --color-border: var(--navy-700);
+  --color-text: var(--gray-100);
+  --color-text-muted: var(--gray-400);
+  --color-accent: var(--pink-400);
+  --color-error: var(--red-500);
+  --color-success: var(--green-500);
+  --color-rainbow-1: var(--red-500);
+  --color-rainbow-2: var(--orange-500);
+  --color-rainbow-3: var(--yellow-500);
+  --color-rainbow-4: var(--green-500);
+  --color-rainbow-5: var(--blue-500);
+  --color-rainbow-6: var(--purple-500);
+}
+
+/* Typography */
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 48px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-base: 1.5;
+  --line-height-loose: 1.75;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-wide: 0.06em;
+}
+
+/* Layout & spacing */
+:root {
+  --container-max: 1280px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+}
+
+/* Animation */
+:root {
+  --duration-fast: 100ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  --duration-slower: 500ms;
+
+  --ease-default: ease;
+  --ease-in: ease-in;
+  --ease-out: ease-out;
+  --ease-in-out: ease-in-out;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Focus-visible outline for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
