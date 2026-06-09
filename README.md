@@ -8,6 +8,7 @@ A Nyan Cat-themed browser for [The Cat API](https://thecatapi.com) — explore a
 - **Breeds** — browse all cat breeds with origin, temperament, and photos
 - **Favorites** — API-backed favorites synced to your Cat API account
 - **Auth** — API key entry with validation, persisted to localStorage
+- **Logout** — clears stored key and returns to the auth screen
 
 ## Tech Stack
 
@@ -52,10 +53,11 @@ src/
   app/        # Router, providers, route guards
 ```
 
-See [docs/design.md](docs/design.md) for full architecture and design decisions.
+See [docs/architecture.md](docs/architecture.md) for architecture and design decisions, and [docs/features.md](docs/features.md) for a feature-by-feature breakdown.
 
 ## Environment Variables
 
 | Variable | Description |
 |---|---|
 | `VITE_CAT_API_BASE_URL` | Cat API base URL (default: `https://api.thecatapi.com/v1`) |
+| `VITE_CAT_CDN_BASE_URL` | Cat CDN base URL for image assets (default: `https://cdn2.thecatapi.com`) |
