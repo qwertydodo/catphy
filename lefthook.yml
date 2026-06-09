@@ -2,6 +2,6 @@ pre-commit:
   parallel: true
   commands:
     typecheck:
-      run: npx tsc --noEmit
+      run: npm run typecheck
     lint:
-      run: npx biome check .
+      run: npm run lint
