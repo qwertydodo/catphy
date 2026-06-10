@@ -25,4 +25,20 @@ describe('routeTree', () => {
     expect(screen.queryByText(/unexpected application error/i)).not.toBeInTheDocument()
     expect(screen.getByLabelText(/api key/i)).toBeInTheDocument()
   })
+
+  it('shows the not-found page for unmatched routes within the basename', () => {
+    const router = createMemoryRouter(routeTree, {
+      basename: '/catphy/',
+      initialEntries: ['/catphy/does-not-exist'],
+    })
+    const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } })
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    )
+
+    expect(screen.getByText('Cat run somewhere')).toBeInTheDocument()
+  })
 })
