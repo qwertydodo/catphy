@@ -1,8 +1,12 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { render, screen } from '@testing-library/react'
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { routeTree } from './router'
+
+vi.mock('../shared/config/env', () => ({
+  env: { catApiBaseUrl: 'http://test', catCdnBaseUrl: 'http://test' },
+}))
 
 describe('routeTree', () => {
   it('matches the root route when served from a subpath basename', () => {
