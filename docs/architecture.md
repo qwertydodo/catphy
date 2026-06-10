@@ -86,7 +86,7 @@ Repositories are tested by mocking `httpClient` (not axios), so tests exercise t
 
 - **Biome** — lint + format, replaces ESLint + Prettier (`biome.json`)
 - **Lefthook** — pre-commit: runs `tsc --noEmit` + `biome check` in parallel (`lefthook.yml`)
-- **Vite** — dev server + build; test runner via Vitest plugin
+- **Vite** — dev server + build; test runner via Vitest plugin. `base` is set via `VITE_BASE_PATH` for GitHub Pages subpath deploys; `import.meta.env.BASE_URL` is passed to `createBrowserRouter` as `basename` so routes resolve under that subpath
 
 ---
 
