@@ -8,7 +8,7 @@ import { routes } from '../shared/config/routes'
 import { Layout } from '../shared/ui/Layout'
 import { RequireApiKey } from './guards/RequireApiKey'
 
-export const router = createBrowserRouter([
+export const routeTree = [
   {
     path: routes.auth.path,
     element: <AuthPage />,
@@ -31,4 +31,8 @@ export const router = createBrowserRouter([
       },
     ],
   },
-])
+]
+
+export const router = createBrowserRouter(routeTree, {
+  basename: import.meta.env.BASE_URL,
+})
