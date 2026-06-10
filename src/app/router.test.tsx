@@ -40,5 +40,6 @@ describe('routeTree', () => {
     )
 
     expect(screen.getByText('Cat run somewhere')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /back to gallery/i })).toBeInTheDocument()
   })
 })

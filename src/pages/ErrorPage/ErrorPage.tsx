@@ -27,6 +27,7 @@ export const ErrorPage = () => {
           <Text variant="body" muted>
             We couldn't find that page.
           </Text>
+          {/* Button (not Link) so it reuses Button's styles/variants without duplicating them on a styled anchor */}
           <Button onClick={() => navigate(routes.gallery.path)}>Back to gallery</Button>
         </div>
       </div>
