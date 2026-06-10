@@ -67,6 +67,7 @@ const { data } = useInfiniteQuery(catQueries.all({ breed_ids: id }))
 | Other HTTP error | TanStack Query `isError` state → `ErrorMessage` with retry |
 | Empty data | `CatGrid` shows "No cats here yet" illustration |
 | Invalid key on auth | Inline error below input, key cleared from storage |
+| Unhandled render error / unmatched route | Root `errorElement` → `ErrorPage` (404 "Cat run somewhere" view vs. generic crash view with reload/gallery actions) |
 
 ---
 

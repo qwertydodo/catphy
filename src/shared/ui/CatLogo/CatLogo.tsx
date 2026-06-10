@@ -1,6 +1,6 @@
 import catLogoUrl from './cat-logo.svg'
 
-const sizes = { sm: 24, md: 40, lg: 64 } as const
+const sizes = { sm: 24, md: 40, lg: 64, xl: 128 } as const
 
 type LogoSize = keyof typeof sizes
 
