@@ -5,7 +5,7 @@ import { wrapper } from '../../test/utils'
 import { AuthPage } from './AuthPage'
 
 vi.mock('../../entities/cat', () => ({
-  catRepository: { getAll: vi.fn() },
+  catRepository: { getFavorites: vi.fn() },
 }))
 
 import { catRepository } from '../../entities/cat'
@@ -24,7 +24,7 @@ describe('AuthPage', () => {
   })
 
   it('shows error on invalid key (401)', async () => {
-    vi.mocked(catRepository.getAll).mockRejectedValue({ response: { status: 401 } })
+    vi.mocked(catRepository.getFavorites).mockRejectedValue({ response: { status: 401 } })
     render(<AuthPage />, { wrapper })
     await userEvent.type(screen.getByLabelText(/api key/i), 'bad-key')
     await userEvent.click(screen.getByRole('button', { name: /save/i }))
@@ -32,9 +32,7 @@ describe('AuthPage', () => {
   })
 
   it('navigates to / on valid key', async () => {
-    vi.mocked(catRepository.getAll).mockResolvedValue([
-      { id: 'x', url: 'u', width: 1, height: 1, breeds: [] },
-    ])
+    vi.mocked(catRepository.getFavorites).mockResolvedValue([])
     render(<AuthPage />, { wrapper })
     await userEvent.type(screen.getByLabelText(/api key/i), 'live_valid-key')
     await userEvent.click(screen.getByRole('button', { name: /save/i }))

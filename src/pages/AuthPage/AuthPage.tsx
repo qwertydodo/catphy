@@ -26,7 +26,7 @@ export const AuthPage = () => {
     setLoading(true)
     setApiKey(key.trim())
     try {
-      await catRepository.getAll({ limit: 1 })
+      await catRepository.getFavorites()
       navigate(routes.gallery.path)
     } catch {
       setApiKey('')
