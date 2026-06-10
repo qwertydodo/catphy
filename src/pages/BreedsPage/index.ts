@@ -1,0 +1,1 @@
+export { BreedsPage } from './BreedsPage'

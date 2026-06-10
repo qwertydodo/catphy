@@ -1,0 +1,78 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { catRepository } from '../../entities/cat'
+import { externalResources } from '../../shared/config/externalResources'
+import { routes } from '../../shared/config/routes'
+import { setApiKey } from '../../shared/lib/storage'
+import { Button } from '../../shared/ui/Button'
+import { Input } from '../../shared/ui/Input'
+import { PageMeta } from '../../shared/ui/PageMeta'
+import { Text } from '../../shared/ui/Typography'
+import styles from './AuthPage.module.css'
+
+export const AuthPage = () => {
+  const [key, setKey] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!key.trim()) {
+      setError('API key is required')
+      return
+    }
+    setError('')
+    setLoading(true)
+    setApiKey(key.trim())
+    try {
+      await catRepository.getFavorites()
+      navigate(routes.gallery.path)
+    } catch {
+      setApiKey('')
+      setError('Invalid API key. Get yours at thecatapi.com')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <div className={styles.page}>
+      <PageMeta title={routes.auth.title} description={routes.auth.description} />
+      <div className={styles.card}>
+        <Text variant="h2" className={styles.title}>
+          🐱 Welcome to Catphy
+        </Text>
+        <Text variant="body" muted className={styles.subtitle}>
+          Enter your Cat API key to continue
+        </Text>
+        <form onSubmit={handleSubmit} className={styles.form} noValidate>
+          <Input
+            id="api-key"
+            label="API Key"
+            type="password"
+            value={key}
+            onChange={(e) => setKey(e.target.value)}
+            placeholder="live_xxxxxxxxxxxxxxxxxxxx"
+            error={error}
+            autoComplete="off"
+          />
+          <Button type="submit" loading={loading}>
+            Save & Continue
+          </Button>
+        </form>
+        <Text variant="sm" muted className={styles.hint}>
+          Get a free key at{' '}
+          <a
+            href={externalResources.catApiWebsiteUrl}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.link}
+          >
+            thecatapi.com
+          </a>
+        </Text>
+      </div>
+    </div>
+  )
+}
