@@ -16,7 +16,7 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+  background: linear-gradient(to top, var(--color-scrim) 0%, transparent 50%);
   opacity: 0;
   transition: opacity var(--duration-base) var(--ease-default);
   display: flex;
@@ -30,12 +30,12 @@
 }
 
 .heartBtn {
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--color-scrim-strong);
   border: none;
   border-radius: 50%;
   width: 36px;
   height: 36px;
-  font-size: 18px;
+  font-size: var(--font-size-lg);
   color: var(--gray-100);
   cursor: pointer;
   display: flex;

@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import type { Breed } from '../../entities/breed'
 import { getBreedImageUrl } from '../../entities/breed'
 import { routes } from '../../shared/config/routes'
+import { Card } from '../../shared/ui/Card'
 import styles from './BreedsPage.module.css'
 
 type BreedCardProps = { breed: Breed }
@@ -13,30 +14,33 @@ export const BreedCard = ({ breed }: BreedCardProps) => {
   return (
     <button
       type="button"
-      className={styles.breedCard}
+      className={styles.breedCardBtn}
       onClick={() => navigate(routes.breedDetail.path(breed.id))}
+      aria-label={`View ${breed.name} details`}
     >
-      <div className={styles.breedImageWrapper}>
-        {imageUrl ? (
-          <img src={imageUrl} alt={breed.name} className={styles.breedImage} loading="lazy" />
-        ) : (
-          <div className={styles.breedImagePlaceholder}>🐾</div>
-        )}
-      </div>
-      <div className={styles.breedInfo}>
-        <span className={styles.breedName}>{breed.name}</span>
-        <span className={styles.breedOrigin}>{breed.origin}</span>
-        <div className={styles.temperamentTags}>
-          {breed.temperament
-            .split(', ')
-            .slice(0, 3)
-            .map((t) => (
-              <span key={t} className={styles.tag}>
-                {t}
-              </span>
-            ))}
+      <Card className={styles.breedCard}>
+        <div className={styles.breedImageWrapper}>
+          {imageUrl ? (
+            <img src={imageUrl} alt={breed.name} className={styles.breedImage} loading="lazy" />
+          ) : (
+            <div className={styles.breedImagePlaceholder}>🐾</div>
+          )}
         </div>
-      </div>
+        <div className={styles.breedInfo}>
+          <span className={styles.breedName}>{breed.name}</span>
+          <span className={styles.breedOrigin}>{breed.origin}</span>
+          <div className={styles.temperamentTags}>
+            {breed.temperament
+              .split(', ')
+              .slice(0, 3)
+              .map((t) => (
+                <span key={t} className={styles.tag}>
+                  {t}
+                </span>
+              ))}
+          </div>
+        </div>
+      </Card>
     </button>
   )
 }
