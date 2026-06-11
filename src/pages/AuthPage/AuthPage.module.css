@@ -36,11 +36,3 @@
 .hint {
   text-align: center;
 }
-
-.link {
-  color: var(--color-accent);
-  text-decoration: none;
-}
-.link:hover {
-  text-decoration: underline;
-}

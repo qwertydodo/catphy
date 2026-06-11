@@ -6,6 +6,7 @@ import { routes } from '../../shared/config/routes'
 import { setApiKey } from '../../shared/lib/storage'
 import { Button } from '../../shared/ui/Button'
 import { Input } from '../../shared/ui/Input'
+import { Link } from '../../shared/ui/Link'
 import { PageMeta } from '../../shared/ui/PageMeta'
 import { Text } from '../../shared/ui/Typography'
 import styles from './AuthPage.module.css'
@@ -62,15 +63,7 @@ export const AuthPage = () => {
           </Button>
         </form>
         <Text variant="sm" muted className={styles.hint}>
-          Get a free key at{' '}
-          <a
-            href={externalResources.catApiWebsiteUrl}
-            target="_blank"
-            rel="noreferrer"
-            className={styles.link}
-          >
-            thecatapi.com
-          </a>
+          Get a free key at <Link href={externalResources.catApiWebsiteUrl}>thecatapi.com</Link>
         </Text>
       </div>
     </div>

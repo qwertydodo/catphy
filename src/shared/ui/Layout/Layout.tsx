@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { routes } from '../../config/routes'
 import { clearApiKey } from '../../lib/storage'
 import { Button } from '../Button'
 import { CatLogo } from '../CatLogo'
 import { CornerPet } from '../CornerPet'
+import { Link } from '../Link'
 import styles from './Layout.module.css'
 
 type LayoutProps = {
@@ -23,30 +24,33 @@ export const Layout = ({ children }: LayoutProps) => {
     <div className={styles.root}>
       <header className={styles.header}>
         <div className={styles.headerInner}>
-          <Link to={routes.gallery.path} className={styles.logo}>
+          <Link to={routes.gallery.path} variant="unstyled" className={styles.logo}>
             <CatLogo size="sm" />
             Catphy
           </Link>
           <nav className={styles.nav}>
-            <NavLink
+            <Link
               to={routes.gallery.path}
               end
+              variant="unstyled"
               className={({ isActive }) => (isActive ? styles.navLinkActive : styles.navLink)}
             >
               Gallery
-            </NavLink>
-            <NavLink
+            </Link>
+            <Link
               to={routes.breeds.path}
+              variant="unstyled"
               className={({ isActive }) => (isActive ? styles.navLinkActive : styles.navLink)}
             >
               Breeds
-            </NavLink>
-            <NavLink
+            </Link>
+            <Link
               to={routes.favorites.path}
+              variant="unstyled"
               className={({ isActive }) => (isActive ? styles.navLinkActive : styles.navLink)}
             >
               Favorites
-            </NavLink>
+            </Link>
             <Button variant="ghost" onClick={handleLogout} aria-label="Log out">
               Log out
             </Button>

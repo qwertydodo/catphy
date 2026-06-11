@@ -46,16 +46,6 @@
   gap: var(--spacing-1);
 }
 
-.wikiLink {
-  color: var(--color-accent);
-  text-decoration: none;
-  font-size: var(--font-size-sm);
-}
-
-.wikiLink:hover {
-  text-decoration: underline;
-}
-
 .loadMore {
   display: flex;
   justify-content: center;

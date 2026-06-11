@@ -5,6 +5,7 @@ import { CatGrid, catQueries } from '../../entities/cat'
 import { routes } from '../../shared/config/routes'
 import { Button } from '../../shared/ui/Button'
 import { ErrorMessage } from '../../shared/ui/ErrorMessage'
+import { Link } from '../../shared/ui/Link'
 import { PageMeta } from '../../shared/ui/PageMeta'
 import { Spinner } from '../../shared/ui/Spinner'
 import { Text } from '../../shared/ui/Typography'
@@ -69,14 +70,9 @@ export const BreedDetailPage = () => {
             </span>
           </div>
           {breed.wikipedia_url && (
-            <a
-              href={breed.wikipedia_url}
-              target="_blank"
-              rel="noreferrer"
-              className={styles.wikiLink}
-            >
+            <Link href={breed.wikipedia_url} size="sm">
               Wikipedia →
-            </a>
+            </Link>
           )}
         </div>
       </div>
