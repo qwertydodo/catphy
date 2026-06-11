@@ -2,6 +2,8 @@
 
 A Nyan Cat-themed browser for [The Cat API](https://thecatapi.com) — explore a randomised gallery of cat images, browse breeds, and save your favorites.
 
+**[Live app](https://qwertydodo.github.io/catphy/)**
+
 ## Features
 
 - **Gallery** — infinite-load cat image grid with breed filter
