@@ -58,6 +58,7 @@ useInfiniteQuery(catQueries.all({ breed_ids: breedId }))
 - Always use shared UI components from `src/shared/ui/` (Button, Spinner, etc.) instead of raw HTML primitives.
 - Check `src/shared/ui/` before writing any interactive or styled element. If a component exists, use it with its variant prop.
 - Never duplicate styles in per-component CSS that belong to a shared component.
+- When introducing a new styled or interactive element, ask whether it belongs in `shared/ui` as a reusable component rather than page-local markup — especially if the same pattern (links, badges, icons, etc.) is likely to repeat. `shared/ui` is the source of truth for repeated components; favor extracting and reusing over duplicating.
 
 ## Accessibility
 

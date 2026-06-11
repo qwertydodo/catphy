@@ -1,0 +1,12 @@
+.text {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.text:hover {
+  text-decoration: underline;
+}
+
+.sm {
+  font-size: var(--font-size-sm);
+}
