@@ -1,14 +1,14 @@
 import { catApiClient } from '../../../shared/api/catApiClient'
-import type { Response } from '../../../shared/types/api'
+import type { ApiResponse } from '../../../shared/types/api'
 import type { Breed } from '../model/types'
 
 export const breedRepository = {
-  getAll: async (): Promise<Response<Breed[]>> => {
+  getAll: async (): Promise<ApiResponse<Breed[]>> => {
     const { data } = await catApiClient.get<Breed[]>('/breeds')
     return data
   },
 
-  getById: async (id: string): Promise<Response<Breed>> => {
+  getById: async (id: string): Promise<ApiResponse<Breed>> => {
     const { data } = await catApiClient.get<Breed>(`/breeds/${id}`)
     return data
   },

@@ -1,5 +1,5 @@
 import type { LimitParams } from '../../../shared/types/api'
-import type { Breed } from '../../breed/model/types'
+import type { Breed } from '../../breed'
 
 export type CatImage = {
   id: string

@@ -5,6 +5,7 @@ import { BreedsPage } from '../pages/BreedsPage'
 import { ErrorPage } from '../pages/ErrorPage'
 import { FavoritesPage } from '../pages/FavoritesPage'
 import { GalleryPage } from '../pages/GalleryPage'
+import { env } from '../shared/config/env'
 import { routes } from '../shared/config/routes'
 import { Layout } from '../shared/ui/Layout'
 import { RequireApiKey } from './guards/RequireApiKey'
@@ -40,5 +41,5 @@ export const routeTree = [
 ]
 
 export const router = createBrowserRouter(routeTree, {
-  basename: import.meta.env.BASE_URL,
+  basename: env.baseUrl,
 })
