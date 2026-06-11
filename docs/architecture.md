@@ -41,10 +41,12 @@ shared/   — generic UI kit, HTTP client, localStorage utils, API types
 
 **Repository pattern** — `catRepository` and `breedRepository` are the only places that call the HTTP client. This isolates network logic and makes testing straightforward: tests `vi.mock` the httpClient, not axios.
 
-**Query factory pattern** — factories return complete TanStack Query option objects that callers spread into `useQuery`/`useInfiniteQuery`. Callers can add `enabled`, `select`, etc. without touching the factory.
+**Query factory pattern** — factories return complete TanStack Query option objects, built with [`queryOptions`](https://tanstack.com/query/latest/docs/framework/react/guides/query-options) / `infiniteQueryOptions` for typed query keys. Callers spread the result into `useQuery`/`useInfiniteQuery`, adding `enabled`, `select`, etc. without touching the factory. To invalidate or read cache entries elsewhere, reuse `catQueries.x().queryKey` rather than re-typing the key array.
 
 ```ts
 const { data } = useInfiniteQuery(catQueries.all({ breed_ids: id }))
+
+queryClient.invalidateQueries({ queryKey: catQueries.favorites().queryKey })
 ```
 
 **Two-tier design tokens** — CSS vars split into a primitive palette (`:root { --pink-400: ... }`) and semantic tokens (`[data-theme="dark"] { --color-accent: var(--pink-400) }`). Components only use semantic tokens. Light theme requires only a `[data-theme="light"]` block.
