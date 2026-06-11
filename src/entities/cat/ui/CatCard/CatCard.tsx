@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { clsx } from 'clsx'
 import { ImageWithFallback } from '../../../../shared/ui/ImageWithFallback'
 import { catRepository } from '../../api/catRepository'
+import { catQueries } from '../../model/catQueries'
 import type { CatImage } from '../../model/types'
 import styles from './CatCard.module.css'
 
@@ -15,7 +16,7 @@ export const CatCard = ({ image, isFavorited, favoriteId }: CatCardProps) => {
   const queryClient = useQueryClient()
 
   const invalidateFavorites = () =>
-    queryClient.invalidateQueries({ queryKey: ['cats', 'favorites'] })
+    queryClient.invalidateQueries({ queryKey: catQueries.favorites().queryKey })
 
   const addFav = useMutation({
     mutationFn: () => catRepository.addFavorite(image.id),
