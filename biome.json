@@ -21,7 +21,11 @@
         "noUnknownAtRules": "off"
       },
       "style": { "noNonNullAssertion": "warn" },
-      "correctness": { "noUnknownMediaFeatureName": "off" }
+      "correctness": {
+        "noUnknownMediaFeatureName": "off",
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error"
+      }
     }
   },
   "formatter": {

@@ -42,6 +42,7 @@ Open [http://localhost:5173](http://localhost:5173), enter your Cat API key when
 | `npm run typecheck` | TypeScript type check only |
 | `npm run lint` | Run Biome linter |
 | `npm run lint:fix` | Run Biome linter and auto-fix |
+| `npm run knip` | Find unused files, exports, and dependencies |
 
 ## Project Structure
 
