@@ -37,6 +37,8 @@
   --color-rainbow-4: var(--green-500);
   --color-rainbow-5: var(--blue-500);
   --color-rainbow-6: var(--purple-500);
+  --color-scrim: rgb(0 0 0 / 0.6);
+  --color-scrim-strong: rgb(0 0 0 / 0.5);
 }
 
 /* Typography */

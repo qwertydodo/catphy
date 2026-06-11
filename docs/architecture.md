@@ -27,7 +27,7 @@ shared/   — generic UI kit, HTTP client, localStorage utils, API types
 | Layer | Responsibility |
 |---|---|
 | `shared/ui` | Generic, domain-free components (Button, Card, Input, Spinner, Layout) |
-| `shared/types` | Reusable API types (ApiResponse, PaginatedResponse, ApiError, LimitParams) |
+| `shared/types` | Reusable API types (ApiResponse, ApiError, LimitParams) |
 | `shared/lib` | localStorage wrapper, useApiKey hook |
 | `shared/api` | Axios instance with API key + 401 interceptors |
 | `entities/cat` | CatImage domain: repository, query factory, reused UI components |
@@ -86,6 +86,7 @@ Repositories are tested by mocking `httpClient` (not axios), so tests exercise t
 ## Tooling
 
 - **Biome** — lint + format, replaces ESLint + Prettier (`biome.json`)
+- **Knip** — finds unused files, exports, and dependencies project-wide (`knip.json`), run via `npm run knip` and checked in CI
 - **Lefthook** — pre-commit: runs `tsc --noEmit` + `biome check` in parallel (`lefthook.yml`)
 - **Vite** — dev server + build; test runner via Vitest plugin. `base` is set via `VITE_BASE_PATH` for GitHub Pages subpath deploys; `import.meta.env.BASE_URL` is passed to `createBrowserRouter` as `basename` so routes resolve under that subpath
 - A build plugin (`scripts/copy404.ts`) copies `dist/index.html` to `dist/404.html` so GitHub Pages serves the SPA (which then resolves the route via `basename`) on hard refresh/direct navigation to deep routes
